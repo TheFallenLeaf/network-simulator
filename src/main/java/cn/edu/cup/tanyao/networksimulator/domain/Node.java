@@ -1,6 +1,8 @@
 package cn.edu.cup.tanyao.networksimulator.domain;
 
-public class Node {
+import java.io.Serializable;
+
+public class Node implements Serializable {
     private Integer nodeId;
 
     private Integer projectId;
@@ -83,5 +85,18 @@ public class Node {
 
     public void setElevation(Double elevation) {
         this.elevation = elevation;
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "nodeId=" + nodeId +
+                ", projectId=" + projectId +
+                ", pressure=" + pressure +
+                ", pressureState=" + pressureState +
+                ", flow=" + flow +
+                ", flowState=" + flowState +
+                ", elevation=" + elevation +
+                '}';
     }
 }

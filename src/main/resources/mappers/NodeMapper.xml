@@ -16,21 +16,27 @@
     node_id, project_id, pressure, pressure_state, flow, flow_state, elevation
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_node
     where node_id = #{nodeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByProjectId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_node
+    where project_id = #{projectId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_node
     where node_id = #{nodeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Node">
-    insert into t_node (node_id, project_id, pressure, 
-      pressure_state, flow, flow_state, 
+    insert into t_node (node_id, project_id, pressure,
+      pressure_state, flow, flow_state,
       elevation)
-    values (#{nodeId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{pressure,jdbcType=DOUBLE}, 
-      #{pressureState,jdbcType=INTEGER}, #{flow,jdbcType=DOUBLE}, #{flowState,jdbcType=INTEGER}, 
+    values (#{nodeId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{pressure,jdbcType=DOUBLE},
+      #{pressureState,jdbcType=INTEGER}, #{flow,jdbcType=DOUBLE}, #{flowState,jdbcType=INTEGER},
       #{elevation,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Node">

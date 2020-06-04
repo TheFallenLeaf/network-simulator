@@ -1,6 +1,9 @@
 package cn.edu.cup.tanyao.networksimulator.dao;
 
 import cn.edu.cup.tanyao.networksimulator.domain.Pipe;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PipeMapper {
     int deleteByPrimaryKey(Integer pipeId);
@@ -14,4 +17,6 @@ public interface PipeMapper {
     int updateByPrimaryKeySelective(Pipe record);
 
     int updateByPrimaryKey(Pipe record);
+
+    List<Pipe> selectByProjectId(@Param("projectId") Integer projectId);
 }

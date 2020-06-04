@@ -1,8 +1,9 @@
 package cn.edu.cup.tanyao.networksimulator.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Project {
+public class Project implements Serializable {
     private Integer projectId;
 
     private Integer projectType;
@@ -74,5 +75,17 @@ public class Project {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "projectId=" + projectId +
+                ", projectType=" + projectType +
+                ", comment='" + comment + '\'' +
+                ", updateBy='" + updateBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

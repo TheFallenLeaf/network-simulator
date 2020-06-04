@@ -1,6 +1,8 @@
 package cn.edu.cup.tanyao.networksimulator.domain;
 
-public class Pipe {
+import java.io.Serializable;
+
+public class Pipe implements Serializable {
     private Integer pipeId;
 
     private Integer projectId;
@@ -83,5 +85,18 @@ public class Pipe {
 
     public void setLength(Double length) {
         this.length = length;
+    }
+
+    @Override
+    public String toString() {
+        return "Pipe{" +
+                "pipeId=" + pipeId +
+                ", projectId=" + projectId +
+                ", startNode=" + startNode +
+                ", endNode=" + endNode +
+                ", diameter=" + diameter +
+                ", roughness=" + roughness +
+                ", length=" + length +
+                '}';
     }
 }

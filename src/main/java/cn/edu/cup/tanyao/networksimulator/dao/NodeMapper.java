@@ -1,6 +1,9 @@
 package cn.edu.cup.tanyao.networksimulator.dao;
 
 import cn.edu.cup.tanyao.networksimulator.domain.Node;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface NodeMapper {
     int deleteByPrimaryKey(Integer nodeId);
@@ -14,4 +17,6 @@ public interface NodeMapper {
     int updateByPrimaryKeySelective(Node record);
 
     int updateByPrimaryKey(Node record);
+
+    List<Node> selectByProjectId(@Param("projectId") Integer projectId);
 }

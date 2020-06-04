@@ -1,6 +1,8 @@
 package cn.edu.cup.tanyao.networksimulator.domain;
 
-public class Gas {
+import java.io.Serializable;
+
+public class Gas implements Serializable {
     private Integer gasId;
 
     private Integer projectId;
@@ -39,5 +41,14 @@ public class Gas {
 
     public void setRelativeDensity(Double relativeDensity) {
         this.relativeDensity = relativeDensity;
+    }
+
+    @Override
+    public String toString() {
+        return "Gas{" +
+                "gasId=" + gasId +
+                ", projectId=" + projectId +
+                ", relativeDensity=" + relativeDensity +
+                '}';
     }
 }

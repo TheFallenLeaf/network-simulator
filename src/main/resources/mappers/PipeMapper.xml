@@ -16,21 +16,27 @@
     pipe_id, project_id, start_node, end_node, diameter, roughness, length
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_pipe
     where pipe_id = #{pipeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByProjectId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_pipe
+    where project_id = #{projectId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_pipe
     where pipe_id = #{pipeId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Pipe">
-    insert into t_pipe (pipe_id, project_id, start_node, 
-      end_node, diameter, roughness, 
+    insert into t_pipe (pipe_id, project_id, start_node,
+      end_node, diameter, roughness,
       length)
-    values (#{pipeId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{startNode,jdbcType=INTEGER}, 
-      #{endNode,jdbcType=INTEGER}, #{diameter,jdbcType=DOUBLE}, #{roughness,jdbcType=DOUBLE}, 
+    values (#{pipeId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{startNode,jdbcType=INTEGER},
+      #{endNode,jdbcType=INTEGER}, #{diameter,jdbcType=DOUBLE}, #{roughness,jdbcType=DOUBLE},
       #{length,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Pipe">
