@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cup.tanyao.networksimulator.dao.PipeMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cup.tanyao.networksimulator.domain.Pipe">
+    <constructor>
+      <idArg column="pipe_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="project_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="start_node" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="end_node" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="diameter" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="roughness" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="length" javaType="java.lang.Double" jdbcType="DOUBLE" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    pipe_id, project_id, start_node, end_node, diameter, roughness, length
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_pipe
+    where pipe_id = #{pipeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_pipe
+    where pipe_id = #{pipeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Pipe">
+    insert into t_pipe (pipe_id, project_id, start_node, 
+      end_node, diameter, roughness, 
+      length)
+    values (#{pipeId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{startNode,jdbcType=INTEGER}, 
+      #{endNode,jdbcType=INTEGER}, #{diameter,jdbcType=DOUBLE}, #{roughness,jdbcType=DOUBLE}, 
+      #{length,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Pipe">
+    insert into t_pipe
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pipeId != null">
+        pipe_id,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="startNode != null">
+        start_node,
+      </if>
+      <if test="endNode != null">
+        end_node,
+      </if>
+      <if test="diameter != null">
+        diameter,
+      </if>
+      <if test="roughness != null">
+        roughness,
+      </if>
+      <if test="length != null">
+        length,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pipeId != null">
+        #{pipeId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="startNode != null">
+        #{startNode,jdbcType=INTEGER},
+      </if>
+      <if test="endNode != null">
+        #{endNode,jdbcType=INTEGER},
+      </if>
+      <if test="diameter != null">
+        #{diameter,jdbcType=DOUBLE},
+      </if>
+      <if test="roughness != null">
+        #{roughness,jdbcType=DOUBLE},
+      </if>
+      <if test="length != null">
+        #{length,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Pipe">
+    update t_pipe
+    <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="startNode != null">
+        start_node = #{startNode,jdbcType=INTEGER},
+      </if>
+      <if test="endNode != null">
+        end_node = #{endNode,jdbcType=INTEGER},
+      </if>
+      <if test="diameter != null">
+        diameter = #{diameter,jdbcType=DOUBLE},
+      </if>
+      <if test="roughness != null">
+        roughness = #{roughness,jdbcType=DOUBLE},
+      </if>
+      <if test="length != null">
+        length = #{length,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where pipe_id = #{pipeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Pipe">
+    update t_pipe
+    set project_id = #{projectId,jdbcType=INTEGER},
+      start_node = #{startNode,jdbcType=INTEGER},
+      end_node = #{endNode,jdbcType=INTEGER},
+      diameter = #{diameter,jdbcType=DOUBLE},
+      roughness = #{roughness,jdbcType=DOUBLE},
+      length = #{length,jdbcType=DOUBLE}
+    where pipe_id = #{pipeId,jdbcType=INTEGER}
+  </update>
+</mapper>

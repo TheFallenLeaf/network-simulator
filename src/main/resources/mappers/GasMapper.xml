@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cup.tanyao.networksimulator.dao.GasMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cup.tanyao.networksimulator.domain.Gas">
+    <constructor>
+      <idArg column="gas_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="project_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="relative_density" javaType="java.lang.Double" jdbcType="DOUBLE" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    gas_id, project_id, relative_density
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_gas
+    where gas_id = #{gasId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_gas
+    where gas_id = #{gasId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Gas">
+    insert into t_gas (gas_id, project_id, relative_density
+      )
+    values (#{gasId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{relativeDensity,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Gas">
+    insert into t_gas
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gasId != null">
+        gas_id,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="relativeDensity != null">
+        relative_density,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gasId != null">
+        #{gasId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="relativeDensity != null">
+        #{relativeDensity,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Gas">
+    update t_gas
+    <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="relativeDensity != null">
+        relative_density = #{relativeDensity,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where gas_id = #{gasId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Gas">
+    update t_gas
+    set project_id = #{projectId,jdbcType=INTEGER},
+      relative_density = #{relativeDensity,jdbcType=DOUBLE}
+    where gas_id = #{gasId,jdbcType=INTEGER}
+  </update>
+</mapper>

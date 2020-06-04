@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cup.tanyao.networksimulator.dao.NodeMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cup.tanyao.networksimulator.domain.Node">
+    <constructor>
+      <idArg column="node_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="project_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="pressure" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="pressure_state" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="flow" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="flow_state" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="elevation" javaType="java.lang.Double" jdbcType="DOUBLE" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    node_id, project_id, pressure, pressure_state, flow, flow_state, elevation
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_node
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_node
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Node">
+    insert into t_node (node_id, project_id, pressure, 
+      pressure_state, flow, flow_state, 
+      elevation)
+    values (#{nodeId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{pressure,jdbcType=DOUBLE}, 
+      #{pressureState,jdbcType=INTEGER}, #{flow,jdbcType=DOUBLE}, #{flowState,jdbcType=INTEGER}, 
+      #{elevation,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Node">
+    insert into t_node
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nodeId != null">
+        node_id,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="pressure != null">
+        pressure,
+      </if>
+      <if test="pressureState != null">
+        pressure_state,
+      </if>
+      <if test="flow != null">
+        flow,
+      </if>
+      <if test="flowState != null">
+        flow_state,
+      </if>
+      <if test="elevation != null">
+        elevation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nodeId != null">
+        #{nodeId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="pressure != null">
+        #{pressure,jdbcType=DOUBLE},
+      </if>
+      <if test="pressureState != null">
+        #{pressureState,jdbcType=INTEGER},
+      </if>
+      <if test="flow != null">
+        #{flow,jdbcType=DOUBLE},
+      </if>
+      <if test="flowState != null">
+        #{flowState,jdbcType=INTEGER},
+      </if>
+      <if test="elevation != null">
+        #{elevation,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Node">
+    update t_node
+    <set>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="pressure != null">
+        pressure = #{pressure,jdbcType=DOUBLE},
+      </if>
+      <if test="pressureState != null">
+        pressure_state = #{pressureState,jdbcType=INTEGER},
+      </if>
+      <if test="flow != null">
+        flow = #{flow,jdbcType=DOUBLE},
+      </if>
+      <if test="flowState != null">
+        flow_state = #{flowState,jdbcType=INTEGER},
+      </if>
+      <if test="elevation != null">
+        elevation = #{elevation,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cup.tanyao.networksimulator.domain.Node">
+    update t_node
+    set project_id = #{projectId,jdbcType=INTEGER},
+      pressure = #{pressure,jdbcType=DOUBLE},
+      pressure_state = #{pressureState,jdbcType=INTEGER},
+      flow = #{flow,jdbcType=DOUBLE},
+      flow_state = #{flowState,jdbcType=INTEGER},
+      elevation = #{elevation,jdbcType=DOUBLE}
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </update>
+</mapper>
