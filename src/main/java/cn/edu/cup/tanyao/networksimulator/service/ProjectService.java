@@ -1,5 +1,6 @@
 package cn.edu.cup.tanyao.networksimulator.service;
 
+import cn.edu.cup.tanyao.networksimulator.structrue.AdjacencyTable;
 import cn.edu.cup.tanyao.networksimulator.structrue.EdgeTable;
 
 /**
@@ -13,5 +14,7 @@ public interface ProjectService {
 	 * @param projectId
 	 * @return
 	 */
-	EdgeTable queryStructure(Integer projectId);
+	EdgeTable queryEdgeTable(Integer projectId);
+
+	public AdjacencyTable queryAdjacencyTable(Integer projectId);
 }

@@ -1,0 +1,60 @@
+[
+  {
+    "node": {
+      "node_id": 1001,
+      "pressure": "2.5MPa",
+      "flow": "12364Sm³/d"
+    },
+    "adjacency": [
+      {
+        "node": {
+          "node_id": 1001,
+          "pressure": "2.5MPa",
+          "flow": "11236Sm³/d"
+        },
+        "pipe": {
+          "pipe_id": 2001,
+          "length": "1683m",
+          "diameter": "0.1m",
+          "roughness": "0.0457mm"
+        }
+      }
+    ]
+  },
+
+  {
+    "node": {
+      "node_id": 1002,
+      "pressure": "2.5MPa",
+      "flow": "12364Sm³/d"
+    },
+    "adjacency": [
+      {
+        "node": {
+          "node_id": 1003,
+          "pressure": "2.5MPa",
+          "flow": "11236Sm³/d"
+        },
+        "pipe": {
+          "pipe_id": 2002,
+          "length": "1683m",
+          "diameter": "0.1m",
+          "roughness": "0.0457mm"
+        }
+      },
+      {
+        "node": {
+          "node_id": 1004,
+          "pressure": "2.5MPa",
+          "flow": "11236Sm³/d"
+        },
+        "pipe": {
+          "pipe_id": 2006,
+          "length": "1683m",
+          "diameter": "0.1m",
+          "roughness": "0.0457mm"
+        }
+      }
+    ]
+  }
+]

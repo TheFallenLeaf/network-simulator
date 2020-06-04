@@ -21,6 +21,12 @@
     from t_pipe
     where pipe_id = #{pipeId,jdbcType=INTEGER}
   </select>
+  <select id="selectByNodeId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_pipe
+    where project_id = #{projectId,jdbcType=INTEGER} and (end_node = #{nodeId,jdbcType=INTEGER} or start_node = #{nodeId,jdbcType=INTEGER})
+  </select>
   <select id="selectByProjectId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

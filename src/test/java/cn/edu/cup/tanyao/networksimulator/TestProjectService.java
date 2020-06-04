@@ -2,6 +2,7 @@ package cn.edu.cup.tanyao.networksimulator;
 
 
 import cn.edu.cup.tanyao.networksimulator.service.ProjectService;
+import cn.edu.cup.tanyao.networksimulator.structrue.AdjacencyTable;
 import cn.edu.cup.tanyao.networksimulator.structrue.EdgeTable;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,9 +25,16 @@ public class TestProjectService {
 	 * 根据项目id获取项目结构数据
 	 */
 	@Test
-	public void testProject() {
-		EdgeTable project = projectService.queryStructure(1);
+	public void testEdgeTable() {
+		EdgeTable edgeTable = projectService.queryEdgeTable(1);
 		System.out.println("边表数据结构：");
-		System.out.println(project);
+		System.out.println(edgeTable);
+	}
+
+	@Test
+	public void testAdjacencyTable() {
+		AdjacencyTable adjacencyTable = projectService.queryAdjacencyTable(1);
+		System.out.println("邻接表数据结构：");
+		System.out.println(adjacencyTable);
 	}
 }
